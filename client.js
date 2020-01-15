@@ -10,9 +10,11 @@ const connect = function() {
   });
   conn.on('connect', () => {
     console.log("Successfully connected to game server")
-    conn.write("Name: EMM");
+    process.stdout.write("Your name: ");
+    process.stdin.on('data', (data) => {
+      conn.write(`Name: ${data}`)
+    })
   })
-
   conn.on('data', (data) => {
     console.log(data);
   });
