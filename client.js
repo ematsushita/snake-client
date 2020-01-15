@@ -8,6 +8,11 @@ const connect = function() {
     host: '192.168.88.45',
     port: 50541
   });
+  conn.on('connect', () => {
+    console.log("Successfully connected to game server")
+    conn.write("Name: EMM");
+  })
+
   conn.on('data', (data) => {
     console.log(data);
   });
