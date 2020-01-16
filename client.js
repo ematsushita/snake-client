@@ -9,14 +9,14 @@ const connect = function(callback) {
     port: 50541
   });
   conn.setEncoding('utf8'); 
-  
+
   conn.on('connect', () => {
     console.log("Successfully connected to game server")
     process.stdout.write("Your name: ");
     const getName = (data) => {
       conn.write(`Name: ${data}`);
       process.stdin.removeListener('data', getName);
-      callback();
+      callback(conn);
     }
     process.stdin.on('data', getName)
   });
