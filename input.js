@@ -36,6 +36,10 @@ const handleUserInput = function(stdin) {
       connection.write("Move: right")
       //console.log("right");
     }
+
+    if (key === 'h') {
+      connection.write("Say: Hello!");
+    }
   })
 }
 
